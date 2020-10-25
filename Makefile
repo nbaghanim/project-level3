@@ -2,6 +2,11 @@ init:
 	git clone https://github.com/nbaghanim/k8s-sandbox.git
 	cd k8s-sandbox && make up && make install-cicd && make install-ingress
 
+create shipping: 
+	cd shipping && kubectl create -f shipping-dep-ser.yaml -n test
+	
+push-shipping:
+	secret-dockerhup shipping-image
 
 secret-dockerhub:
 	docker login
@@ -9,8 +14,12 @@ secret-dockerhub:
 	 --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
  	--type=kubernetes.io/dockerconfigjson -n test
 
-push: 
-	Secret-dockerhub front-end-image
+shipping-image:
+	kubectl create -f shipping/tektonDockerPush/serviceaccount.yaml -f shipping/tektonDockerPush/pipelinerun.yaml\
+	 -f shipping/tektonDockerPush/task.yaml -f shipping/tektonDockerPush/run.yaml -n test
+shipping-all:
+	kubectl create -f shipping/try1/pipelineResource.yaml -f shipping/try1/task.yaml -f shipping/try1/run.yaml -f shipping/try1/deployTask.yaml \
+        -f shipping/try1/deployRunner.yaml -f shipping/try1/pipeline.yaml -f shipping/try1/pipelineRun.yaml -n test
 	
 push-images: 
 		
