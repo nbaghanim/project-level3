@@ -3,14 +3,14 @@ init:
 	cd k8s-sandbox && make up && make install-cicd && make install-ingress
 
 
-secret-dockerhup:
+secret-dockerhub:
 	docker login
 	kubectl create secret generic rayanah-secret \
 	 --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
  	--type=kubernetes.io/dockerconfigjson -n test
 
 push: 
-	Secret-dockerhup front-end-image
+	Secret-dockerhub front-end-image
 	
 push-images: 
 		
