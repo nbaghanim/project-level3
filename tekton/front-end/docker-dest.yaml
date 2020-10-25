@@ -1,9 +1,0 @@
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: docker-destination
-spec:
-  type: image
-  params:
-    - name: url
-      value: nbaghanim/front-end #configure: replace with where the image should go: perhaps your local registry or Dockerhub with a secret and configured service account

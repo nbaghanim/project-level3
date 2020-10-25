@@ -1,0 +1,21 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: sock-shop-role
+rules:
+- apiGroups: ["","apps", "extensions"]
+  resources: ["services", "deployments", "deployments.apps", "replicasets", "pods", "ingresses","secrets"]
+  verbs: ["*"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sock-shop-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: sock-shop-role
+subjects:
+- kind: ServiceAccount
+  name: nbaghanim-docker-hub

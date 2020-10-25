@@ -3,4 +3,4 @@ kind: ServiceAccount
 metadata:
   name: nbaghanim-docker-hub
 secrets:
-  - name: nbaghanim-docker-hub-creds
+  - name: regcred

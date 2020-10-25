@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
-kind: TaskRun
+kind: Task
 metadata:
-  name: front-end-dep-runner
+  name: front-end-deploy-kubectl
   serviceAccountName: nbaghanim-docker-hub
 spec:
   params:
@@ -11,10 +11,9 @@ spec:
       default: $(resources.inputs.front-end-pr.path)/front-end/front-end-dep.yaml
     - name: namespace
       default: test
-
   resources:
     inputs:
-      - name: front-end-resource
+      - name: front-end-pr
         type: git
   steps:
    - name: run-kubectl

@@ -1,17 +1,13 @@
-
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  name: dockr-runner
+  name: front-end-run
 spec:
   serviceAccountName: nbaghanim-docker-hub
   taskRef:
-    name: dockr
-  params:
-  - name: IMAGE
-    value: "nbaghanim/front-end"
+    name: front-end-deploy-kubectl
   resources:
     inputs:
-    - name: front-end
+    - name: front-end-pr
       resourceRef:
-        name: front-end
+        name: front-end-pr
