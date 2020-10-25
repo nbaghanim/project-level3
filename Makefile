@@ -3,14 +3,15 @@ init:
 	cd k8s-sandbox && make up && make install-cicd && make install-ingress
 
 
-secret-docker: 		
-	secret-dockerhup:
+secret-dockerhup:
 	docker login
 	kubectl create secret generic rayanah-secret \
 	 --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
  	--type=kubernetes.io/dockerconfigjson -n test
 
-
+push: 
+	Secret-dockerhup front-end-image
+	
 push-images: 
 		
 	kubectl create -f ./tekton/role.yaml -n test
