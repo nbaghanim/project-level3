@@ -107,6 +107,6 @@ deploy-sockshop:
 	
  
 front-end-try:
-	kubectl create -f sa.yaml -f role-binding.yaml -f front-end/try/pipelineResource.yaml -f front-end/try/task.yaml \ -f front-end/try/run.yaml -f front-end/try/deployTask.yaml -f front-end/try/deployRunner.yaml -f front-end/try/pipeline.yaml \ -f front-end/try/pipelineRun.yaml -n test
-
-
+	kubectl create -f sa.yaml -f role-binding.yaml -f front-end/try/pipelineResource.yaml -f front-end/try/task.yaml \
+	-f front-end/try/run.yaml -f front-end/try/deployTask.yaml -f front-end/try/deployRunner.yaml -f front-end/try/pipeline.yaml \
+	-f front-end/try/pipelineRun.yaml -n test
