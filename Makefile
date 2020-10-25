@@ -4,8 +4,10 @@ init:
 
 
 secret-docker: 		
-	kubectl create secret generic regcred \
- 	--from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
+	secret-dockerhup:
+	docker login
+	kubectl create secret generic rayanah-secret \
+	 --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
  	--type=kubernetes.io/dockerconfigjson -n test
 
 
