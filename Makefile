@@ -109,7 +109,7 @@ deploy-sockshop:
  
 e2e-try:
 	docker login
-	kubectl create secret generic rayanah-secret \
+	kubectl create secret generic nbaghanim-secret \
 	 --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
  	--type=kubernetes.io/dockerconfigjson -n test
 	kubectl create -f e2e-tests/tektonDockerPush/serviceaccount.yaml -f e2e-tests/tektonDockerPush/pipelinerun.yaml\
