@@ -1,11 +1,11 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: front-end-resource
+  name: front-end
 spec:
   type: git
   params:
     - name: revision
-      value: main
+      value: master
     - name: url
-      value:  https://github.com/nbaghanim/project-level3
+      value: https://github.com/nbaghanim/project-level3
