@@ -40,7 +40,7 @@ push-images:
 	kubectl create -f ./shipping/shipping-svc.yaml -n test
 	kubectl create -f ./user/user-db-dep.yaml -n test
 	kubectl create -f ./user/user-db-svc.yaml -n test
-	kubectl create -f ./user/order-dep.yaml -n test
+	kubectl create -f ./user/user-dep.yaml -n test
 	kubectl create -f ./user/user-svc.yaml -n test
 
 deploy-images:
@@ -67,7 +67,7 @@ deploy-images:
 	kubectl apply -f ./shipping/shipping-svc.yaml -n test
 	kubectl apply -f ./user/user-db-dep.yaml -n test
 	kubectl apply -f ./user/user-db-svc.yaml -n test
-	kubectl apply -f ./user/order-dep.yaml -n test
+	kubectl apply -f ./user/user-dep.yaml -n test
 	kubectl apply -f ./user/user-svc.yaml -n test
 
 
