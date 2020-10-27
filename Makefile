@@ -2,11 +2,19 @@ init:
 	git clone https://github.com/nbaghanim/k8s-sandbox.git
 	cd k8s-sandbox && make up && make install-cicd && make install-ingress
 
+<<<<<<< HEAD
 logging:
 	cd k8s-sandbox && make install-logging && cd ..
 
 monitoring:
 	cd k8s-sandbox && make install-monitoring && cd ..
+=======
+create shipping: 
+	cd shipping && kubectl create -f shipping-dep-ser.yaml -n test
+	
+push-shipping:
+	secret-dockerhup shipping-image
+>>>>>>> 0964a3d3347e901f95345e5f0e9f73e13c7708ff
 
 secret-dockerhub:
 	docker login
@@ -14,6 +22,7 @@ secret-dockerhub:
 	 --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
  	--type=kubernetes.io/dockerconfigjson -n test	
 
+<<<<<<< HEAD
 push-images:
 	kubectl create -f ./front-end/front-end-dep.yaml -n test
 	kubectl create -f ./front-end/front-end-ingress.yaml -n test
@@ -40,6 +49,82 @@ push-images:
 	kubectl create -f ./user/user-db-svc.yaml -n test
 	kubectl create -f ./user/order-dep.yaml -n test
 	kubectl create -f ./user/user-svc.yaml -n test
+=======
+shipping-image:
+	kubectl create -f shipping/tektonDockerPush/serviceaccount.yaml -f shipping/tektonDockerPush/pipelinerun.yaml\
+	 -f shipping/tektonDockerPush/task.yaml -f shipping/tektonDockerPush/run.yaml -n test
+shipping-all:
+	kubectl create -f shipping/try1/pipelineResource.yaml -f shipping/try1/task.yaml -f shipping/try1/run.yaml -f shipping/try1/deployTask.yaml \
+        -f shipping/try1/deployRunner.yaml -f shipping/try1/pipeline.yaml -f shipping/try1/pipelineRun.yaml -n test
+	
+push-images: 
+		
+	kubectl create -f ./tekton/role.yaml -n test
+	kubectl create -f ./tekton/role-binding.yaml -n test
+	kubectl create -f ./tekton/sa-front-end.yaml -n test
+	kubectl create -f ./tekton/front-end/PipelineResource-front-end.yaml -n test
+	kubectl create -f ./tekton/front-end/task-front-end.yaml -n test
+	kubectl create -f ./tekton/front-end/task-front-end-dep.yaml -n test
+	kubectl create -f ./tekton/front-end/pipeline-front-end.yaml -n test
+	kubectl create -f ./tekton/front-end/PipelineRun-front-end.yaml -n test
+	kubectl create -f ./tekton/catalogue/PipelineResource-catalogue.yaml -n test
+	kubectl create -f ./tekton/catalogue/task-catalogue-db.yaml -n test
+	kubectl create -f ./tekton/catalogue/task-catalogue-db-dep.yaml -n test
+	kubectl create -f ./tekton/catalogue/task-catalogue.yaml -n test
+	kubectl create -f ./tekton/catalogue/task-catalogue-dep.yaml -n test
+	kubectl create -f ./tekton/catalogue/pipeline-catalogue.yaml -n test
+	kubectl create -f ./tekton/catalogue/PipelineRun-catalogue.yaml -n test
+	kubectl create -f ./tekton/load-test/PipelineResource-load-test.yaml -n test
+	kubectl create -f ./tekton/load-test/task-load-test.yaml -n test
+	kubectl create -f ./tekton/load-test/task-load-test-dep.yaml -n test
+	kubectl create -f ./tekton/load-test/pipeline-load-test.yaml -n test
+	kubectl create -f ./tekton/load-test/PipelineRun-load-test.yaml -n test
+	kubectl create -f ./tekton/queue-master/PipelineResource-queue-master.yaml -n test
+	kubectl create -f ./tekton/queue-master/task-queue-master.yaml -n test
+	kubectl create -f ./tekton/queue-master/task-queue-master-dep.yaml -n test
+	kubectl create -f ./tekton/queue-master/pipeline-queue-master.yaml -n test
+	kubectl create -f ./tekton/queue-master/PipelineRun-queue-master.yaml -n test
+	kubectl create -f ./tekton/rabbitmq/task-rabbitmq-dep.yaml -n test
+	kubectl create -f ./tekton/rabbitmq/pipeline-rabbitmq.yaml -n test
+	kubectl create -f ./tekton/rabbitmq/PipelineRun-rabbitmq.yaml -n test
+	kubectl create -f ./tekton/orders/PipelineResource-orders.yaml -n test
+	kubectl create -f ./tekton/orders/task-orders-db-dep.yaml -n test
+	kubectl create -f ./tekton/orders/task-orders.yaml -n test
+	kubectl create -f ./tekton/orders/task-orders-dep.yaml -n test
+	kubectl create -f ./tekton/orders/pipeline-orders.yaml -n test
+	kubectl create -f ./tekton/orders/PipelineRun-orders.yaml -n test
+	kubectl create -f ./tekton/shipping/PipelineResource-shipping.yaml -n test
+	kubectl create -f ./tekton/shipping/task-shipping.yaml -n test
+	kubectl create -f ./tekton/shipping/task-shipping-dep.yaml -n test
+	kubectl create -f ./tekton/shipping/pipeline-shipping.yaml -n test
+	kubectl create -f ./tekton/shipping/PipelineRun-shipping.yaml -n test
+	kubectl create -f ./tekton/user/PipelineResource-user.yaml -n test
+	kubectl create -f ./tekton/user/task-user-db.yaml -n test
+	kubectl create -f ./tekton/user/task-user-db-dep.yaml -n test
+	kubectl create -f ./tekton/user/task-user.yaml -n test
+	kubectl create -f ./tekton/user/task-user-dep.yaml -n test
+	kubectl create -f ./tekton/user/pipeline-user.yaml -n test
+	kubectl create -f ./tekton/user/PipelineRun-user.yaml -n test
+	kubectl create -f ./tekton/payment/PipelineResource-payment.yaml -n test
+	kubectl create -f ./tekton/payment/task-payment.yaml -n test
+	kubectl create -f ./tekton/payment/task-payment-dep.yaml -n test
+	kubectl create -f ./tekton/payment/pipeline-payment.yaml -n test
+	kubectl create -f ./tekton/payment/PipelineRun-payment.yaml -n test
+	#kubectl create -f ./tekton/e2e-tests/PipelineResource-e2e-tests.yaml -n test
+	#kubectl create -f ./tekton/e2e-tests/task-e2e-tests.yaml -n test
+	#kubectl create -f ./tekton/e2e-tests/TaskRun-e2e-tests.yaml -n test
+	kubectl create -f ./tekton/carts/PipelineResource-carts.yaml -n test
+	kubectl create -f ./tekton/carts/task-carts-db-dep.yaml -n test
+	kubectl create -f ./tekton/carts/task-carts.yaml -n test
+	kubectl create -f ./tekton/carts/task-carts-dep.yaml -n test
+	kubectl create -f ./tekton/carts/pipeline-carts.yaml -n test
+	kubectl create -f ./tekton/carts/PipelineRun-carts.yaml -n test
+	kubectl create -f ./tekton/e2e-js-test/PipelineResource-e2e-js-test.yaml -n  test
+	kubectl create -f ./tekton/e2e-js-test/task-e2e-js-test.yaml -n  test
+	kubectl create -f ./tekton/e2e-js-test/task-e2e-js-test-dep.yaml -n  test
+	kubectl create -f ./tekton/e2e-js-test/pipeline-e2e-js-test.yaml -n  test
+	kubectl create -f ./tekton/e2e-js-test/PipelineRun-e2e-js-test.yaml -n  test
+>>>>>>> 0964a3d3347e901f95345e5f0e9f73e13c7708ff
 
 
 deploy-images:
