@@ -28,10 +28,10 @@ push-images:
 	kubectl create -f ./catalogue/catalogue-db-svc.yaml -n test
 	kubectl create -f ./catalogue/catalogue-dep.yaml -n test
 	kubectl create -f ./catalogue/catalogue-svc.yaml -n test
-	kubectl create -f ./order/order-db-dep.yaml -n test
-	kubectl create -f ./order/order-db-svc.yaml -n test
-	kubectl create -f ./order/order-dep.yaml -n test
-	kubectl create -f ./order/order-svc.yaml -n test
+	kubectl create -f ./orders/orders-db-dep.yaml -n test
+	kubectl create -f ./orders/orders-db-svc.yaml -n test
+	kubectl create -f ./orders/orders-dep.yaml -n test
+	kubectl create -f ./orders/orders-svc.yaml -n test
 	kubectl create -f ./payment/payment-dep.yaml -n test
 	kubectl create -f ./payment/payment-svc.yaml -n test
 	kubectl create -f ./rabbitmq/rabbitmq-dep.yaml -n test
@@ -55,10 +55,10 @@ deploy-images:
 	kubectl apply -f ./catalogue/catalogue-db-svc.yaml -n test
 	kubectl apply -f ./catalogue/catalogue-dep.yaml -n test
 	kubectl apply -f ./catalogue/catalogue-svc.yaml -n test
-	kubectl apply -f ./order/order-db-dep.yaml -n test
-	kubectl apply -f ./order/order-db-svc.yaml -n test
-	kubectl apply -f ./order/order-dep.yaml -n test
-	kubectl apply -f ./order/order-svc.yaml -n test
+	kubectl apply -f ./orders/orders-db-dep.yaml -n test
+	kubectl apply -f ./orders/orders-db-svc.yaml -n test
+	kubectl apply -f ./orders/orders-dep.yaml -n test
+	kubectl apply -f ./orders/orders-svc.yaml -n test
 	kubectl apply -f ./payment/payment-dep.yaml -n test
 	kubectl apply -f ./payment/payment-svc.yaml -n test
 	kubectl apply -f ./rabbitmq/rabbitmq-dep.yaml -n test
