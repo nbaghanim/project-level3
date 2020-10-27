@@ -9,7 +9,7 @@ pipelineRun:
 	kubectl create -f ./pipelinerun/
 
 role:
-	kubectl apply -f ./roles/	
+	kubectl apply -f ./role/	
 
 namespace:
 	kubectl create namespace test
