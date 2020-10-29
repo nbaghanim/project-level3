@@ -18,6 +18,15 @@ pipeline:
 pipelineRun:
 	kubectl create -f ./pipelinerun/
 
+<<<<<<< HEAD
+=======
+role:
+	kubectl apply -f ./role/	
+	
+task-front-end:
+	kubectl apply -f ./front-end/
+
+>>>>>>> e5067acc4a201d34f0352cfdf333530d8f146950
 namespace:
 	kubectl create namespace test
 	kubectl create namespace production
