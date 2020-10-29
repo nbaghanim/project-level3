@@ -15,60 +15,31 @@ secret-dockerhub:
 	 --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
  	--type=kubernetes.io/dockerconfigjson -n test	
 
-
-create-deploy-images:
-	kubectl create -f ./front-end/front-end-dep.yaml -n test
-	kubectl create -f ./front-end/front-end-ingress.yaml -n test
-	kubectl create -f ./front-end/front-end-svc.yaml -n test
-	kubectl create -f ./carts/carts-db-dep.yaml -n test
-	kubectl create -f ./carts/carts-db-svc.yaml -n test
-	kubectl create -f ./carts/carts-dep.yaml -n test
-	kubectl create -f ./carts/carts-svc.yaml -n test
-	kubectl create -f ./catalogue/catalogue-db-dep.yaml -n test
-	kubectl create -f ./catalogue/catalogue-db-svc.yaml -n test
-	kubectl create -f ./catalogue/catalogue-dep.yaml -n test
-	kubectl create -f ./catalogue/catalogue-svc.yaml -n test
-	kubectl create -f ./orders/orders-db-dep.yaml -n test
-	kubectl create -f ./orders/orders-db-svc.yaml -n test
-	kubectl create -f ./orders/orders-dep.yaml -n test
-	kubectl create -f ./orders/orders-svc.yaml -n test
-	kubectl create -f ./payment/payment-dep.yaml -n test
-	kubectl create -f ./payment/payment-svc.yaml -n test
-	kubectl create -f ./rabbitmq/rabbitmq-dep.yaml -n test
-	kubectl create -f ./rabbitmq/rabbitmq-svc.yaml -n test
-	kubectl create -f ./shipping/shipping-dep.yaml -n test
-	kubectl create -f ./shipping/shipping-svc.yaml -n test
-	kubectl create -f ./user/user-db-dep.yaml -n test
-	kubectl create -f ./user/user-db-svc.yaml -n test
-	kubectl create -f ./user/user-dep.yaml -n test
-	kubectl create -f ./user/user-svc.yaml -n test
-
-deploy-images:
-	kubectl apply -f ./front-end/front-end-dep.yaml -n test
-	kubectl apply -f ./front-end/front-end-ingress.yaml -n test
-	kubectl apply -f ./front-end/front-end-svc.yaml -n test
-	kubectl apply -f ./carts/carts-db-dep.yaml -n test
-	kubectl apply -f ./carts/carts-db-svc.yaml -n test
-	kubectl apply -f ./carts/carts-dep.yaml -n test
-	kubectl apply -f ./carts/carts-svc.yaml -n test
-	kubectl apply -f ./catalogue/catalogue-db-dep.yaml -n test
-	kubectl apply -f ./catalogue/catalogue-db-svc.yaml -n test
-	kubectl apply -f ./catalogue/catalogue-dep.yaml -n test
-	kubectl apply -f ./catalogue/catalogue-svc.yaml -n test
-	kubectl apply -f ./orders/orders-db-dep.yaml -n test
-	kubectl apply -f ./orders/orders-db-svc.yaml -n test
-	kubectl apply -f ./orders/orders-dep.yaml -n test
-	kubectl apply -f ./orders/orders-svc.yaml -n test
-	kubectl apply -f ./payment/payment-dep.yaml -n test
-	kubectl apply -f ./payment/payment-svc.yaml -n test
-	kubectl apply -f ./rabbitmq/rabbitmq-dep.yaml -n test
-	kubectl apply -f ./rabbitmq/rabbitmq-svc.yaml -n test
-	kubectl apply -f ./shipping/shipping-dep.yaml -n test
-	kubectl apply -f ./shipping/shipping-svc.yaml -n test
-	kubectl apply -f ./user/user-db-dep.yaml -n test
-	kubectl apply -f ./user/user-db-svc.yaml -n test
-	kubectl apply -f ./user/user-dep.yaml -n test
-	kubectl apply -f ./user/user-svc.yaml -n test
+deploy-website-test:
+        #kubectl create namespace test
+        kubectl apply -f ./front-end/deploy/front-end-dep.yaml -n test
+        kubectl apply -f ./front-end/deploy/front-end-svc.yaml -n test
+        kubectl apply -f ./front-end/deploy/ingress.yaml -n test
+        kubectl apply -f ./carts/deploy/carts-db-dep.yaml -n test
+        kubectl apply -f ./carts/deploy/carts-db-svc.yaml -n test
+        kubectl apply -f ./carts/deploy/carts-dep.yaml -n test
+        kubectl apply -f ./carts/deploy/carts-svc.yml -n test
+        kubectl apply -f ./catalogue/deploy/catalogue-db-dep.yaml -n test
+        kubectl apply -f ./catalogue/deploy/catalogue-db-svc.yaml -n test
+        kubectl apply -f ./catalogue/deploy/catalogue-dep.yaml -n test
+        kubectl apply -f ./catalogue/deploy/catalogue-svc.yaml -n test
+        kubectl apply -f ./orders/deploy/orders-db-dep.yaml -n test
+        kubectl apply -f ./orders/deploy/orders-db-svc.yaml -n test
+        kubectl apply -f ./orders/deploy/orders-dep.yaml -n test
+        kubectl apply -f ./orders/deploy/orders-svc.yaml -n test
+        kubectl apply -f ./payment/deploy/payment-dep.yaml -n test
+        kubectl apply -f ./payment/deploy/payment-svc.yaml -n test
+        kubectl apply -f ./shipping/deploy/shipping-dep.yaml -n test
+        kubectl apply -f ./shipping/deploy/shipping-svc.yaml -n test
+        kubectl apply -f ./user/deploy/user-db-dep.yaml -n test
+        kubectl apply -f ./user/deploy/user-db-svc.yaml -n test
+        kubectl apply -f ./user/deploy/user-dep.yaml -n test
+        kubectl apply -f ./user/deploy/user-svc.yaml -n test
 
 
 up: build run
