@@ -16,7 +16,7 @@ secret-dockerhub:
  	--type=kubernetes.io/dockerconfigjson -n test	
 
 
-push-images:
+create-deploy-images:
 	kubectl create -f ./front-end/front-end-dep.yaml -n test
 	kubectl create -f ./front-end/front-end-ingress.yaml -n test
 	kubectl create -f ./front-end/front-end-svc.yaml -n test
