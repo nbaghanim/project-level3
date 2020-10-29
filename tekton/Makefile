@@ -3,10 +3,13 @@ up: namespace testEnv secret-docker roles tasks pipeline pipelineRun
 testEnv:
 	kubectl config set-context --current --namespace=test
 
-secret-docker: 		
-	kubectl create secret generic omar-docker-hub-creds \
- 	--from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
- 	--type=kubernetes.io/dockerconfigjson
+secret-docker-hub: 		
+	 docker login
+        kubectl create secret generic nbaghanim-docker-hub \
+         --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
+        --type=kubernetes.io/dockerconfigjson -n test   
+
+
 
 roles:
 	kubectl apply -f ./roles/ 
@@ -67,7 +70,7 @@ checkStatus:
 	./run1.sh
 
 test:
-	kubectl create secret generic omar-docker-hub-creds \
+	kubectl create secret generic nbaghanim-docker-hub-creds \
         --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json \
         --type=kubernetes.io/dockerconfigjson -n test
 	kubectl apply -f tests/roles -n test
