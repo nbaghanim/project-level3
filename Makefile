@@ -111,7 +111,7 @@ run-website:
 	kubectl create -f ./test-tekton/tasks/deploy-task.yaml -n test
 	kubectl create -f ./test-tekton/pipelines/
 	kubectl create -f ./test-tekton/pipelinerun/
-	cd tekton && ./status.sh
+	cd test-tekton && ./run.sh
 	kubectl create -f ./test-tekton/tasks/run-e2e.yaml -n test
 	kubectl create -f ./test-tekton/tasks/deploy-task-prod.yaml -n  test
 	kubectl create -f ./test-tekton/pipeline/pipeline-e2e-js-test.yaml -n  test
