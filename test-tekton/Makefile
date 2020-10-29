@@ -16,6 +16,10 @@ role:
 	
 task-shipping:
 	k apply -f ./shipping/ -n test
+	
+task-load-test:
+	k apply -f ./load-test/ -n test
+
 
 namespace:
 	kubectl create namespace test
