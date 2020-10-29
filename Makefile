@@ -103,7 +103,25 @@ run:
 	docker run -d --cap-drop=all --cap-add=net_bind_service --network project --name payment payment
 	docker run -d --cap-drop=all --cap-add=chown --cap-add=setuid --cap-add=setgid  --network project --name user-db user-db
 	docker run -d --cap-drop=all --cap-add=net_bind_service --network project --name user user
-
+down:
+	docker rm -f front-end
+	docker rm -f edge-router
+	docker rm -f catalogue
+	docker rm -f catalogue-db
+	docker rm -f carts
+	docker rm -f carts-db
+	docker rm -f orders
+	docker rm -f orders-db
+	docker rm -f shipping
+	docker rm -f queue-master
+	docker rm -f rabbitmq
+	docker rm -f payment
+	docker rm -f user-db
+	docker rm -f user
+	docker network rm project
+test:
+	docker build -t user-simulator ./load-test/
+	docker run -it --network project user-simulator -H edge-router -r 0.5 -t 30s -u 20
 
 run-website:
 	kubectl create -f ./test-tekton/PipelineResource/ -n test
