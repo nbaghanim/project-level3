@@ -104,3 +104,15 @@ run:
 	docker run -d --cap-drop=all --cap-add=chown --cap-add=setuid --cap-add=setgid  --network project --name user-db user-db
 	docker run -d --cap-drop=all --cap-add=net_bind_service --network project --name user user
 
+
+run-website:
+	kubectl create -f ./test-tekton/PipelineResource/ -n test
+	kubectl create -f ./test-tekton/tasks/build-push-task.yaml -n test
+	kubectl create -f ./test-tekton/tasks/deploy-task.yaml -n test
+	kubectl create -f ./test-tekton/pipelines/
+	kubectl create -f ./test-tekton/pipelinerun/
+	cd tekton && ./status.sh
+	kubectl create -f ./test-tekton/tasks/run-e2e.yaml -n test
+	kubectl create -f ./test-tekton/tasks/deploy-task-prod.yaml -n  test
+	kubectl create -f ./test-tekton/pipeline/pipeline-e2e-js-test.yaml -n  test
+	kubectl create -f ./test-tekton/pipelinerun/PipelineRun-e2e-js-test.yaml -n  test
