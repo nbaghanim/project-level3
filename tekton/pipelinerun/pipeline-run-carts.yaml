@@ -23,6 +23,10 @@ spec:
     value: "./carts/docker/carts-db/carts-db-dep.yaml"
   - name: pathToDBServiceFile
     value: "./carts/docker/carts-db/carts-db-svc.yaml"
+  - name: IMAGETEST
+    value: "nbaghanim/e2e-test"
+  - name: namespaceProd
+    value: "production"
 
   pipelineRef:
     name: build-deploy-run-db-without-data
