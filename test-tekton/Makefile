@@ -8,6 +8,9 @@ pipeline:
 pipelineRun:
 	kubectl create -f ./pipelinerun/
 
+resource:
+	kubectl create -f ./PipelineResource/ -n test
+
 role:
 	kubectl apply -f ./role/	
 	
