@@ -23,7 +23,7 @@ tasks:
 	kubectl apply -f ./carts/ -n test
 	kubectl apply -f ./catalogue/ -n test
 	kubectl apply -f ./e2e-js-test/ -n test
-	kubectl apply -f ./e2e-test/ -n test
+	kubectl apply -f ./e2e-tests/ -n test
 	kubectl apply -f ./edge-router/ -n test
 	kubectl apply -f ./front-end/ -n test
 	kubectl apply -f ./load-test/ -n test
