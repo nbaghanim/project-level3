@@ -10,6 +10,9 @@ pipelineRun:
 
 role:
 	kubectl apply -f ./role/	
+	
+task-front-end:
+	kubectl apply -f ./front-end/
 
 namespace:
 	kubectl create namespace test
