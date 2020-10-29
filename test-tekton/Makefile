@@ -12,7 +12,7 @@ role:
 	kubectl apply -f ./role/	
 	
 task-shipping:
-	k apply -f ./shipping/
+	k apply -f ./shipping/ -n test
 
 namespace:
 	kubectl create namespace test
