@@ -10,6 +10,9 @@ pipelineRun:
 
 role:
 	kubectl apply -f ./role/	
+	
+task-shipping:
+	k apply -f ./shipping/
 
 namespace:
 	kubectl create namespace test
